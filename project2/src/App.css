@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 20px;
+  border: 2px solid gray;
+  border-radius: 20px;
+  border-color: rgb(133, 123, 130);
+  box-shadow: 1px 1px 5px #a89a9a8a;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
