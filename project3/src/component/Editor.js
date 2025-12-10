@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Editor.css";
-import { emtionList, getFormattedDate } from '../util';
+import { emotionList, getFormattedDate } from '../util';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import EmotionItem from './EmotionItem';
@@ -10,10 +10,19 @@ const Editor = ({initData, onSubmit}) => {
     const navigate = useNavigate();
 
     const [state, setState] = useState({
-        date : getFormattedDate(new Date()),
+        date: getFormattedDate(new Date()),
         emotionId : 3,
         content : ""
     });
+
+    useEffect( ()=> { 
+        if(initData){
+            setState({
+                ...initData,
+                date : getFormattedDate(new Date(parseInt(initData.date)))
+            })
+        }
+    }, [initData]);
 
     const handleChangeDate = (e) => {
         setState({
@@ -40,7 +49,7 @@ const Editor = ({initData, onSubmit}) => {
     const handleChangeEmotion = (emotionId) => {
         setState({
             ...state,
-            emotionId
+            emotionId: emotionId
         });
     };
 
@@ -56,7 +65,7 @@ const Editor = ({initData, onSubmit}) => {
             <div className='editor_section'>
                 <h4>오늘의 감정</h4>
                 <div className='input_wrapper emotion_list_wrapper'>
-                    {emtionList.map(
+                    {emotionList.map(
                         (it) => <EmotionItem 
                             key={it.id}
                             {...it}

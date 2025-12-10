@@ -1,0 +1,92 @@
+import React, { useEffect, useState } from 'react';
+import Button from './Button';
+import "./DiaryList.css";
+import { useNavigate } from 'react-router-dom';
+import DiaryItem from './DiaryItem';
+
+
+const sortOptionList = [
+    {value: "latest", name:"최신순"},
+    {value: "oldest", name:"오래된 순"},
+];
+
+const DiaryList = ({data}) => {
+
+    const [sortType, setSortType] = useState("latest");
+    const [sortedData, setSortedData] = useState([]);
+    
+    useEffect( () => {
+
+        // 정렬 조건
+        const compare = (a,b) => {
+            if(sortType === "latest"){
+                return Number(b.date) - Number(a.date);
+            }else{
+                return Number(a.date) - Number(b.date);
+            }
+        };
+
+        /* 
+            { name : "홍길동", age : 20 } -> js 객체
+            { "name" : "홍길동", "age" : 20 } ->sjon
+            JSON.stringify(data) : js 객체 -> json 변환
+            JSON.parse() : json -> js객체변경
+
+            이유 : 원본 데이터 보존하기 위해서 (깊은 복사)
+        */
+
+        const copyList = JSON.parse(JSON.stringify(data));
+        copyList.sort(compare);
+        setSortedData(copyList);
+
+    }, [data, sortType]);
+
+
+
+    const onChangeSortType = (e) => {
+        setSortType(e.target.value);
+    }
+
+    const navigate = useNavigate();
+
+    const onClickNew = () => {
+        navigate("/new");
+    }
+    console.log("data : " + data);
+    console.log( sortedData);
+    return (
+        <div className='DiaryList'>
+            <div className='menu_wrapper'>
+                <div className='left_col'>
+                    <select value={sortType} onChange={onChangeSortType}>
+                        {
+                            /* map은 key가 필요하다 */
+                            sortOptionList.map( (it, i) => (
+                                <option key={i} value={it.value}>
+                                    {it.name}
+                                </option>
+                            ))
+                        }
+
+                    </select>
+                </div>
+                <div className='right_col'>
+                    <Button 
+                        type={"positive"} 
+                        text={"새 일기 쓰기"}
+                        onClick={onClickNew}
+                        />
+                </div>
+            </div>
+
+            <div className='list_wrapper'>
+                { sortedData.map( (it) => (
+                    <DiaryItem key={it.id} {...it}/>
+                    ))
+                }
+            </div> 
+        </div>
+    );
+};
+
+export default DiaryList;
