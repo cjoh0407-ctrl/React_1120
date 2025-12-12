@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.slider {
+  height:500px; 
+  /* background-image: url('../public/img/slider.jpg'); */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 30px;
+}

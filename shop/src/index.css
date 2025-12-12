@@ -22,3 +22,12 @@ code {
 
 .c1 {text-decoration: none; color:#000; text-align: center;}
 .c1:hover {color: green;}
+
+.start {
+  transform: scale(0);
+
+}
+.end {
+    transform: scale(1);
+    transition :all 0.5s;
+}

@@ -5,6 +5,8 @@ import Header from '../component/Header';
 import { DiaryStateContext } from '../App';
 import { getMonthRangeByDate } from '../util';
 import DiaryList from '../component/DiaryList';
+
+
 const Home = () => {
     const data = useContext(DiaryStateContext);
     const [filteredData, setFilteredData] = useState([]);
@@ -28,7 +30,7 @@ const Home = () => {
             const {beginTimeDate, endTimeStamp} = getMonthRangeByDate(pivotDate);
 
             setFilteredData(
-                data.filter( (it) => beginTimeDate <= it.date && it.date <= endTimeStamp));
+                data.filter( (it) => (beginTimeDate <= it.date) && it.date <= endTimeStamp));
 
         }else{
             setFilteredData([]);
