@@ -1,0 +1,144 @@
+/* Existing App.css content - appending new styles */
+
+/* Slider Overlay Styles */
+
+@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+/* 1. 얇은 굵기 (Light) 파일 정의 */
+@font-face {
+  font-family: 'BonmyeongjoSourceHanSerif';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff'); /* 실제 Light 파일 경로 */
+  font-weight: 300; /* 이 파일은 300 굵기로 사용 */
+  font-style: normal;
+}
+
+/* 2. 일반 굵기 (Regular) 파일 정의 */
+@font-face {
+  font-family: 'BonmyeongjoSourceHanSerif';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff'); /* 실제 Regular 파일 경로 */
+  font-weight: 400; /* 이 파일은 400 굵기로 사용 */
+  font-style: normal;
+}
+
+/* 3. 굵은 굵기 (Bold) 파일 정의 */
+@font-face {
+  font-family: 'BonmyeongjoSourceHanSerif';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff'); /* 실제 Bold 파일 경로 */
+  font-weight: 700; /* 이 파일은 700 굵기로 사용 */
+  font-style: normal;
+}
+
+.App{
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  font-family: "BonmyeongjoSourceHanSerif";
+  background-color: #e6e9ec;
+  
+}
+
+.slider {
+  position: relative;
+}
+
+.slider-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.slider-text-overlay h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.slider-text-overlay p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
+
+/* Base styles ensuring full height if needed */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom Order Button Hover Effect */
+.custom-order-btn:hover {
+  background-color: #dc3545; /* Bootstrap danger color */
+  border-color: #dc3545;
+  color: white;
+  transform: scale(1.05); /* Slight zoom effect */
+  transition: all 0.2s ease;
+}
+
+/* Slider basic style from original file (assuming it existed or needed) */
+.slider {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.slider-text-overlay {
+  font-family: 'BonmyeongjoSourceHanSerif', serif;
+  font-weight: 300;
+
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #2c2c2c;
+    font-family: 'NanumSquare', sans-serif;
+  font-weight: 700; /* Bold 굵기 적용 */
+    
+}
+
+.bg-white {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-bg-opacity)) !important;
+}
